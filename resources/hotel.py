@@ -60,10 +60,12 @@ class Hotel(Resource):
         novo_hotel = hotel_objeto.json()
 
         hotel = Hotel.find_hotel(hotel_id)
-        if hotel:
-            return novo_hotel, 200
-        hoteis.append(novo_hotel)
-        return novo_hotel, 201
+        if not hotel:
+            hoteis.append(novo_hotel)
+            return novo_hotel, 201
+        return novo_hotel, 200
+        
+        
 
     def put(self, hotel_id):
         """Pega os dados e irá parsear em chave e valor"""
