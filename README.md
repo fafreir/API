@@ -8,5 +8,5 @@ Estão sendo utilizadas as seguintes tecnologias:
 - Python
 - Flask
 - Flask-Restful
-- sqlite
+- sqlite3
 - Flask-SQLAlchemy
