@@ -3,7 +3,7 @@
 <p style="text-decoration: none;"> Link do curso: https://www.udemy.com/course/rest-apis-com-python-e-flask/ </p>
 
 
-### Tecnologias utilizadas
+<h3> Tecnologias utilizadas </h3>
 <p> Estão sendo utilizadas as seguintes tecnologias: </p>
 <ul>
   <li>Python</li>
