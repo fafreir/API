@@ -56,14 +56,8 @@ class Hotel(Resource):
         """Irá instanciar e parsear com chave e valor"""
         dados = Hotel.argumentos.parse_args()
 
-        """Será criado um novo_hotel, iremos acessar através da instancia dados"""
-        novo_hotel = {
-            "hotel_id": hotel_id,
-            "nome": dados["nome"],
-            "estrelas": dados["estrelas"],
-            "diaria": dados["diaria"],
-            "cidade": dados["cidade"]
-        }
+        """Vai desempacotar os dados"""
+        novo_hotel = {'hotel_id': hotel_id, **dados}
 
         """Adiciona na lista hoteis o novo hotel"""
         hoteis.append(novo_hotel)
@@ -72,7 +66,23 @@ class Hotel(Resource):
         return novo_hotel, 200
 
     def put(self, hotel_id):
-        pass 
+        """Pega os dados e irá parsear em chave e valor"""
+        dados = Hotel.argumentos.parse_args()
+
+        """Vai desempacotar os dados"""
+        novo_hotel = {'hotel_id': hotel_id, **dados}
+
+        """Se o hotel existe, irá atualizar e retornar com status code de sucesso"""
+        hotel = Hotel.find_hotel(hotel_id)
+        if hotel:
+            hotel.update(novo_hotel)
+            return novo_hotel, 200
+
+        """Caso não exista, irá inserir na lista de hoteis, retornar o novo hotel/
+        com status code 201, que é de created
+        """
+        hoteis.append(novo_hotel)
+        return novo_hotel, 201
 
     def delete(self, hotel_id):
         pass 
