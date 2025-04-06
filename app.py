@@ -9,4 +9,4 @@ api.add_resource(Hoteis, '/hoteis')
 api.add_resource(Hoteis, '/hoteis/<string:hotel_id>')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True)  
