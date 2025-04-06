@@ -40,21 +40,21 @@ class Hotel(Resource):
         argumentos = reqparse.RequestParser()
 
         """Irá pegar os argumentos especificos"""
-        argumentos.add_argument('nome')
-        argumentos.add_argument('estrelas')
-        argumentos.add_argument('diaria')
-        argumentos.add_argument('cidade')
+        argumentos.add_argument("nome")
+        argumentos.add_argument("estrelas")
+        argumentos.add_argument("diaria")
+        argumentos.add_argument("cidade")
 
         """Irá instanciar e parsear com chave e valor"""
         dados = argumentos.parse_args()
 
         """Será criado um novo_hotel, iremos acessar através da instancia dados"""
         novo_hotel = {
-            'hotel_id': hotel_id,
-            'nome': dados['nome'],
-            'estrelas': dados['estrelas'],
-            'diaria': dados['diaria'],
-            'cidade': dados['cidade']
+            "hotel_id": hotel_id,
+            "nome": dados["nome"],
+            "estrelas": dados["estrelas"],
+            "diaria": dados["diaria"],
+            "cidade": dados["cidade"]
         }
 
         """Adiciona na lista hoteis o novo hotel"""
