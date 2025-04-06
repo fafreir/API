@@ -20,7 +20,7 @@ hoteis = [
         'nome': 'Charlie Hotel',
         'estrelas': 3.9,
         'diaria': 320.20,
-        'cidade': 'Santa Catarina'
+        'cidade': 'Curitiba'
     }
 ]
 
