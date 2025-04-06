@@ -5,8 +5,6 @@
 
 ### Tecnologias utilizadas
 Estão sendo utilizadas as seguintes tecnologias:
-<ul>
-  <li>Python</li>
-  <li>Flask</li>
-  <li>Flask-Restfull</li>
-</ul>
+- Python
+- Flask
+- Flask-Restful
