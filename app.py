@@ -1,15 +1,21 @@
 from flask import Flask 
 from flask_restful import Api 
 from resources.hotel import Hoteis, Hotel
+import os
+
+diretorio_atual = os.path.abspath(os.path.dirname(__file__))
+db_caminho = os.path.join(diretorio_atual, 'hotel.db')
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_caminho}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
 api = Api(app)
+
 
 @app.before_request
 def cria_banco():
     banco.create_all()
+
 
 api.add_resource(Hoteis, '/hoteis')
 api.add_resource(Hotel, '/hoteis/<string:hotel_id>')
