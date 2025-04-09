@@ -4,18 +4,21 @@ from resources.hotel import Hoteis, Hotel
 import os
 
 diretorio_atual = os.path.abspath(os.path.dirname(__file__))
-db_caminho = os.path.join(diretorio_atual, 'hotel.db')
+db_caminho = os.path.join(diretorio_atual, 'banco.db')
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_caminho}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
 api = Api(app)
 
+configuracoes_carregadas = False
 
 @app.before_request
 def cria_banco():
-    banco.create_all()
-
+    global configuracoes_carregadas
+    if not configuracoes_carregadas:
+        banco.create_all()
+        configuracoes_carregadas = True
 
 api.add_resource(Hoteis, '/hoteis')
 api.add_resource(Hotel, '/hoteis/<string:hotel_id>')
