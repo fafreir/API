@@ -13,6 +13,7 @@ api = Api(app)
 
 configuracoes_carregadas = False
 
+
 @app.before_request
 def cria_banco():
     global configuracoes_carregadas
