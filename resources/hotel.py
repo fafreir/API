@@ -29,7 +29,7 @@ hoteis = [
 
 class Hoteis(Resource):
     def get(self):
-        return {"hoteis": hoteis}
+        return {"hoteis": [hotel.json() for hotel in HotelModel.query.all()]}
     
 class Hotel(Resource):
     
@@ -66,25 +66,20 @@ class Hotel(Resource):
         
 
     def put(self, hotel_id):
-        """Pega os dados e irá parsear em chave e valor"""
         dados = Hotel.argumentos.parse_args()
+        hotel_encontrado = HotelModel.find_hotel(hotel_id)
 
-        hotel_objeto = HotelModel(hotel_id, **dados)
-        novo_hotel = hotel_objeto.json()
-
-        """Se o hotel existe, irá atualizar e retornar com status code de sucesso"""
-        hotel = Hotel.find_hotel(hotel_id)
-        if hotel:
-            hotel.update(novo_hotel)
-            return novo_hotel, 200
-
-        """Caso não exista, irá inserir na lista de hoteis, retornar o novo hotel/
-        com status code 201, que é de created
-        """
-        hoteis.append(novo_hotel)
-        return novo_hotel, 201
+        if hotel_encontrado:
+            hotel_encontrado.update_hotel(**dados)
+            hotel_encontrado.save_hotel()
+            return hotel_encontrado, 200
+        hotel = HotelModel(hotel_id, **dados)
+        hotel.save_hotel()
+        return hotel.json(), 201
 
     def delete(self, hotel_id):
-        global hoteis 
-        hoteis = [hoteis for hotel in hoteis if hotel != hotel_id]
-        return {'message': 'Hotel deleted.'}
+        hotel = HotelModel.find_hotel(hotel_id)
+        if hotel:
+            hotel.delete_hotel()
+            return {'message': 'Hotel deleted.'}
+        return {'message':'Hotel not found'}, 404
