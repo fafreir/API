@@ -12,5 +12,5 @@ Estão sendo utilizadas as seguintes tecnologias:
 - Flask-SQLAlchemy
 
 Instalação de pacotes utilizados:
-
+- Para instalar as bibliotecas, só utilizar o comando abaixo: <br>
 <code>pip install -r requirements.txt</code>
