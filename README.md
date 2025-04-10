@@ -11,7 +11,7 @@ Estão sendo utilizadas as seguintes tecnologias (em atualização, conforme uti
 - sqlite3
 - Flask-SQLAlchemy
 
-Instalação de pacotes utilizados:
+#### Instalação de pacotes utilizados:
 - Para instalar as bibliotecas, só utilizar o comando abaixo: <br>
 <code>pip install -r requirements.txt</code></br>
 
