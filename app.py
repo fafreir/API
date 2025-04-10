@@ -11,15 +11,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_caminho}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
 api = Api(app)
 
-configuracoes_carregadas = False
-
 
 @app.before_request
 def cria_banco():
-    global configuracoes_carregadas
-    if not configuracoes_carregadas:
-        banco.create_all()
-        configuracoes_carregadas = True
+    banco.create_all()
+       
 
 api.add_resource(Hoteis, '/hoteis')
 api.add_resource(Hotel, '/hoteis/<string:hotel_id>')
