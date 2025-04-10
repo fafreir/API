@@ -6,21 +6,11 @@ class Hoteis(Resource):
         return {"hoteis": [hotel.json() for hotel in HotelModel.query.all()]}
     
 class Hotel(Resource):
-    
-    """Recebe os elementos da requisição e habilita o parseamento"""
     argumentos = reqparse.RequestParser()
-
-    """Irá pegar os argumentos especificos"""
-    argumentos.add_argument("nome")
-    argumentos.add_argument("estrelas")
+    argumentos.add_argument("nome", type=str, required=True, help="The field 'nome' cannot be left blank,")
+    argumentos.add_argument("estrelas", type=float, required=True, help="The field 'estrelas' cannot be left blank.")
     argumentos.add_argument("diaria")
     argumentos.add_argument("cidade")
-    
-    def find_hotel(hotel_id):
-        for hotel in hoteis:
-            if hotel["hotel_id"] == hotel_id:
-                return hotel
-        return None 
     
     def get(self, hotel_id):
         hotel = HotelModel.find_hotel(hotel_id)
