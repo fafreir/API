@@ -20,11 +20,14 @@ class Hotel(Resource):
 
     def post(self, hotel_id):   
         if HotelModel.find_hotel(hotel_id):
-            return {"message": "Hotel id '{}' already exists".format(hotel_id)}   
+            return {"message": "Hotel id '{}' already exists".format(hotel_id)}, 400  
         
         dados = Hotel.argumentos.parse_args()
         hotel = HotelModel(hotel_id, **dados)
-        hotel.save_hotel()
+        try:
+            hotel.save_hotel()
+        except:
+            return {'message':"An internal error ocurred trying"}, 500
         return hotel.json()
         
         
@@ -38,12 +41,18 @@ class Hotel(Resource):
             hotel_encontrado.save_hotel()
             return hotel_encontrado, 200
         hotel = HotelModel(hotel_id, **dados)
-        hotel.save_hotel()
+        try:
+            hotel.save_hotel()
+        except:
+            return {'message':"An internal error ocurred trying"}, 500
         return hotel.json(), 201
 
     def delete(self, hotel_id):
         hotel = HotelModel.find_hotel(hotel_id)
         if hotel:
-            hotel.delete_hotel()
+            try:
+                hotel.delete_hotel()
+            except:
+                return {'message':"An internal error ocurred trying"}, 500
             return {'message': 'Hotel deleted.'}
         return {'message':'Hotel not found'}, 404
