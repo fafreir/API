@@ -4,7 +4,7 @@
 Para saber mais sobre o curso [Link do curso](https://www.udemy.com/course/rest-apis-com-python-e-flask/)  <br/> <br/>
 
 #### Tecnologias utilizadas
-Estão sendo utilizadas as seguintes tecnologias:
+Estão sendo utilizadas as seguintes tecnologias (em atualização, conforme utilização):
 - Python
 - Flask
 - Flask-Restful
