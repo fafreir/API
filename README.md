@@ -14,4 +14,5 @@ Estão sendo utilizadas as seguintes tecnologias:
 Instalação de pacotes utilizados:
 - Para instalar as bibliotecas, só utilizar o comando abaixo: <br>
 <code>pip install -r requirements.txt</code></br>
+
 Observação: Não são as mesmas versões utilizados no curso, pois estamos usando as versões mais recentes. Com isso, pode haver modificações no código.
