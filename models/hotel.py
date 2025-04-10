@@ -19,11 +19,11 @@ class HotelModel(banco.Model):
 
     def json(self):
         return {
-            'hotel_id': self.hotel_id, 
-            'nome': self.nome, 
-            'estrelas': self.estrelas,
-            'diaria': self.diaria,
-            'cidade': self.cidade 
+            "hotel_id": self.hotel_id, 
+            "nome": self.nome, 
+            "estrelas": self.estrelas,
+            "diaria": self.diaria,
+            "cidade": self.cidade 
         }
     
     @classmethod
