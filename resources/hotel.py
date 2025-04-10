@@ -28,10 +28,8 @@ class Hotel(Resource):
             hotel.save_hotel()
         except:
             return {'message':"An internal error ocurred trying"}, 500
-        return hotel.json()
+        return hotel.json(), 201
         
-        
-
     def put(self, hotel_id):
         dados = Hotel.argumentos.parse_args()
         hotel_encontrado = HotelModel.find_hotel(hotel_id)
@@ -44,7 +42,7 @@ class Hotel(Resource):
         try:
             hotel.save_hotel()
         except:
-            return {'message':"An internal error ocurred trying"}, 500
+            return {'message':"An internal error ocurred trying to save hotel"}, 500
         return hotel.json(), 201
 
     def delete(self, hotel_id):
@@ -53,6 +51,6 @@ class Hotel(Resource):
             try:
                 hotel.delete_hotel()
             except:
-                return {'message':"An internal error ocurred trying"}, 500
+                return {'message':"An internal error ocurred trying to delete hotel"}, 500
             return {'message': 'Hotel deleted.'}
         return {'message':'Hotel not found'}, 404
