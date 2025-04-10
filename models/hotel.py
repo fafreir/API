@@ -1,6 +1,5 @@
 from sql_alchemy import banco
 
-
 class HotelModel(banco.Model):
     __tablename__ = 'hoteis'
 
@@ -28,7 +27,7 @@ class HotelModel(banco.Model):
     
     @classmethod
     def find_hotel(cls, hotel_id):
-        hotel = cls.query.filter_by(hotel_id=hotel_id).first() # select * from hoteis where hotel_id = hotel_id
+        hotel = cls.query.filter_by(hotel_id=hotel_id).first() 
         if hotel:
             return hotel
         return None 
