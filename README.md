@@ -10,13 +10,11 @@ Estão sendo utilizadas as seguintes tecnologias (em atualização, conforme uti
 - Flask-Restful
 - sqlite3
 - Flask-SQLAlchemy
-- flask_jwt_extended
+- flask_jwt_extended  <br/> <br/>
 
 #### Instalação de pacotes utilizados:
 - Para instalar as bibliotecas, só utilizar o comando abaixo: <br>
-<code>pip install -r requirements.txt</code></br>
-
-Observação: Não são as mesmas versões utilizados no curso, pois estamos usando as versões mais recentes. Com isso, pode haver modificações no código.
+<code>pip install -r requirements.txt</code>  <br/> <br/>
 
 #### Bibliotecas e funções deprecated (Obsoleta)
 Quando instalamos o Flask, vem junto algumas dependências como o werkzeug.
