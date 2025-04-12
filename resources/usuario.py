@@ -7,7 +7,7 @@ class User(Resource):
         user = UserModel.find_user(user_id)
         if user:
             return user.json()
-        return {"message": "Hotel not found."}, 404
+        return {"message": "User not found."}, 404
 
     def delete(self, user_id):
         user = UserModel.find_user(user_id)
@@ -15,7 +15,7 @@ class User(Resource):
             try:
                 user.delete_user()
             except:
-                return {'message':"An internal error ocurred trying to delete hotel"}, 500
+                return {'message':"An internal error ocurred trying to delete user"}, 500
             return {'message': 'User deleted.'}
         return {'message':'User not found'}, 404
     
