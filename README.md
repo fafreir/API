@@ -10,7 +10,8 @@ Estão sendo utilizadas as seguintes tecnologias (em atualização, conforme uti
 - Flask-Restful
 - sqlite3
 - Flask-SQLAlchemy
-- flask_jwt_extended  <br/> <br/>
+- flask_jwt_extended
+- Postman <br/> <br/>
 
 #### Instalação de pacotes utilizados:
 - Para instalar as bibliotecas, só utilizar o comando abaixo: <br>
