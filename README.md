@@ -24,5 +24,5 @@ Assim como o Flask, essas dependencias, também com o tempo podem ficar obsoleta
 [Mudanças no Werkzeug](https://werkzeug.palletsprojects.com/en/stable/changes/)
 - safe_str_cmp: Na versão do werkzeug, foi removida na versão 2.1.0. A orientação é utilizar hmac ou hashlib. Nesse caso, iremos utilizar o hmac.
 
-[Mudanças no Werkzeug](https://flask.palletsprojects.com/en/stable/changes/)
+[Mudanças no Flask](https://flask.palletsprojects.com/en/stable/changes/)
 - before_first_request: Essa anotação foi removida na versão 2.3.0, uma alternativa é a utilização da anotação @app.before_request
