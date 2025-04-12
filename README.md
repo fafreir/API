@@ -16,3 +16,13 @@ Estão sendo utilizadas as seguintes tecnologias (em atualização, conforme uti
 <code>pip install -r requirements.txt</code></br>
 
 Observação: Não são as mesmas versões utilizados no curso, pois estamos usando as versões mais recentes. Com isso, pode haver modificações no código.
+
+#### Bibliotecas e funções deprecated (Obsoleta)
+Quando instalamos o Flask, vem junto algumas dependências como o werkzeug.
+Assim como o Flask, essas dependencias, também com o tempo podem ficar obsoletas ou deprecated.
+
+[Mudanças no Werkzeug](https://werkzeug.palletsprojects.com/en/stable/changes/)
+- safe_str_cmp: Na versão do werkzeug, foi removida na versão 2.1.0. A orientação é utilizar hmac ou hashlib. Nesse caso, iremos utilizar o hmac.
+
+[Mudanças no Werkzeug](https://flask.palletsprojects.com/en/stable/changes/)
+- before_first_request: Essa anotação foi removida na versão 2.3.0, uma alternativa é a utilização da anotação @app.before_request
