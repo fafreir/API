@@ -17,25 +17,21 @@ app.config["JWT_BLOCKLIST_ENABLED"] = True  # Ativa o BLOCKLIST
 api = Api(app)
 jwt = JWTManager(app)
 
- 
 @app.before_request
 def cria_banco():
     banco.create_all()
 
 @jwt.token_in_blocklist_loader
-def check_if_token_in_blocklist(self, token):
+def verifica_blacklist(self, token):
     return token["jti"] in BLOCKLIST
 
 
 @jwt.revoked_token_loader
-def revoked_token_callback():
+def token_de_acesso_invalidado():
     return  jsonify(
             {"description": "The token has been revoked.", "error": "token_revoked"}
         ), 401
 
-
-
-       
 api.add_resource(Hoteis, '/hoteis')
 api.add_resource(Hotel, '/hoteis/<string:hotel_id>')
 api.add_resource(User, '/usuarios/<int:user_id>')
