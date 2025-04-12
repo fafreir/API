@@ -11,6 +11,7 @@ db_caminho = os.path.join(diretorio_atual, 'banco.db')
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_caminho}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
+app.config["JWT_SECRET_KEY"] = "super-secret-key" 
 api = Api(app)
 jwt = JWTManager(app)
 
@@ -23,7 +24,7 @@ api.add_resource(Hoteis, '/hoteis')
 api.add_resource(Hotel, '/hoteis/<string:hotel_id>')
 api.add_resource(User, '/usuarios/<int:user_id>')
 api.add_resource(UserRegister, '/cadastro')
-api.add_resource(UserLogin, 'UserLogin')
+api.add_resource(UserLogin, '/login')
 
 if __name__ == '__main__':
     from sql_alchemy import banco
