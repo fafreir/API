@@ -43,7 +43,6 @@ class UserLogin(Resource):
     def post(cls):
         dados = atributos.parse_args()
         user = UserModel.find_by_login(dados['login'])
-
         # if user and safe_str_cmp(user.senha, dados['senha'])
         if user and hmac.compare_digest(user.senha, dados['senha']):
             token_de_acesso = create_access_token(identity=user.user_id)
