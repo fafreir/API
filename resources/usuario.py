@@ -55,6 +55,8 @@ class UserLogout(Resource):
 
     @jwt_required()
     def post(self):
+        """Ao realizar logout, pega o id do Token """
         jti_id = get_jwt()['jti'] # JWT Token Identifier
+        """ Adiciona o Token na BLOCKLIST """
         BLOCKLIST.add(jti_id)
         return {'message':'Logged out sucessfully!'}, 200
