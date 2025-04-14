@@ -77,8 +77,7 @@ class Hotel(Resource):
     
     @jwt_required()
     def put(self, hotel_id):
-        dados = Hotel.argumentos.parse_args()
-        
+        dados = Hotel.argumentos.parse_args()     
         hotel_encontrado = HotelModel.find_hotel(hotel_id)
         if hotel_encontrado:
             hotel_encontrado.update_hotel(**dados)
