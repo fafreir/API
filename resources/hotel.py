@@ -46,11 +46,11 @@ class Hoteis(Resource):
     
 class Hotel(Resource):
     argumentos = reqparse.RequestParser()
-    argumentos.add_argument("nome", type=str, required=True, help="The field 'nome' cannot be left blank,")
-    argumentos.add_argument("estrelas", type=float, required=True, help="The field 'estrelas' cannot be left blank.")
-    argumentos.add_argument("diaria")
-    argumentos.add_argument("cidade")
-    argumentos.add_argument("site_id", required=True, help="Every hotel needs to be linked with a site.")
+    argumentos.add_argument("nome", type=str, help="The field 'nome' cannot be left blank")
+    argumentos.add_argument("estrelas", type=float, help="The field 'estrelas' cannot be left blank.")
+    argumentos.add_argument("diaria", type=float)
+    argumentos.add_argument("cidade", type=str)
+    argumentos.add_argument("site_id", type=int,  help="Every hotel needs to be linked with a site.")
     
     def get(self, hotel_id):
         hotel = HotelModel.find_hotel(hotel_id)
@@ -78,8 +78,8 @@ class Hotel(Resource):
     @jwt_required()
     def put(self, hotel_id):
         dados = Hotel.argumentos.parse_args()
+        
         hotel_encontrado = HotelModel.find_hotel(hotel_id)
-
         if hotel_encontrado:
             hotel_encontrado.update_hotel(**dados)
             hotel_encontrado.save_hotel()
